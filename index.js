@@ -1,7 +1,6 @@
 const debug = require('debug')('electron-vk-oauth2');
 const url = require('url');
 const qs = require('querystring');
-const BrowserWindow = require('electron').BrowserWindow;
 
 const VK_AUTHORIZE_URL = 'https://oauth.vk.com/authorize';
 const VK_REDIRECT_URL = 'https://oauth.vk.com/blank.html';
@@ -11,7 +10,7 @@ const VK_REDIRECT_URL = 'https://oauth.vk.com/blank.html';
  * @returns {Promise} A promise fillfilled with accessToken, userId and expiresIn values,
  * or rejected promise if login request was cancelled.
  */
-function authenticateVK(options, windowOptions) {
+function authenticateVK(options, windowOptions, BrowserWindow) {
     const opts = Object.assign({}, {
         authorizeUrl: VK_AUTHORIZE_URL,
         redirectUri: VK_REDIRECT_URL,
